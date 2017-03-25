@@ -30,6 +30,7 @@ class PlanRequest extends FormRequest
             'plan_address' => 'required',
             'lat' => 'required',
             'lng' => 'required',
+            'time_to_prepare' => 'required',
             'date' => 'required|date',
             'time' => 'required|date_format:H:i:s'
         ];
