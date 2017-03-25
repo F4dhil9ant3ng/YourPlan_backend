@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 
-// use Illuminate\Http\Request;
 use App\Http\Requests\LoginRequest;
 
 use App\Models\User;
@@ -38,6 +37,6 @@ class LoginController extends Controller
 			]
 		];
 
-		return response()->json(['token' => $token]);
+		return response()->json($returnData);
 	}
 }
