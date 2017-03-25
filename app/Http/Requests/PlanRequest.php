@@ -13,7 +13,7 @@ class PlanRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,14 @@ class PlanRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'id_user' => 'required',
+            'plan_name' => 'required',
+            'plan_place' => 'required',
+            'plan_address' => 'required',
+            'lat' => 'required',
+            'lng' => 'required',
+            'date' => 'required|date',
+            'time' => 'required'
         ];
     }
 }
