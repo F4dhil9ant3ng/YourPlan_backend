@@ -37,4 +37,10 @@ class PlanController extends Controller
 
     	return response()->json($plan);
     }
+
+    public function detail($idPlan) {
+        $plan = $this->plan->find($idPlan);
+
+        return response()->json($plan);
+    }
 }
