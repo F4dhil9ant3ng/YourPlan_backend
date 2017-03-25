@@ -32,7 +32,7 @@ class PlanRequest extends FormRequest
             'lng' => 'required',
             'time_to_prepare' => 'required',
             'date' => 'required|date',
-            'time' => 'required|date_format:H:i:s'
+            'time' => 'required|date_format:H:i'
         ];
     }
 }
