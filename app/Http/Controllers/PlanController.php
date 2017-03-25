@@ -12,8 +12,8 @@ class PlanController extends Controller
     	$this->plan = $plan;
     }
 
-    public function index() {
-    	$plans = $this->plan->where('id_user', '=' , 1)->get();
+    public function index($idUser) {
+    	$plans = $this->plan->where('id_user', '=' , $idUser)->get();
 
     	return response()->json($plans);
     }

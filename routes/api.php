@@ -17,8 +17,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::group(['prefix' => 'plan'], function() {
-	Route::get('/', 'PlanController@index');
+Route::group(['prefix' => 'plan', 'middleware' => 'jwt.auth'], function() {
+	Route::get('{idUser}', 'PlanController@index');
 	Route::post('insert', 'PlanController@insert');
 
 	// distance matrix google api
