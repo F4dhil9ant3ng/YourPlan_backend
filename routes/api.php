@@ -19,7 +19,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::group(['prefix' => 'plan'], function() {
 	Route::get('/', 'PlanController@index');
-	Route::get('insert', 'PlanController@insert');
+	Route::post('insert', 'PlanController@insert');
+
+	// distance matrix google api
+	Route::get('{idPlan}/measure', 'MeasureTimeController@measure');
 });
 
+// Auth
 Route::post('login', 'Auth\LoginController@login');
+Route::post('register', 'Auth\RegisterController@register');
