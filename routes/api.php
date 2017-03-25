@@ -21,3 +21,5 @@ Route::group(['prefix' => 'plan'], function() {
 	Route::get('/', 'PlanController@index');
 	Route::get('insert', 'PlanController@insert');
 });
+
+Route::post('login', 'Auth\LoginController@login');
