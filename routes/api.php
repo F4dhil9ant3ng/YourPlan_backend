@@ -17,13 +17,17 @@ use Illuminate\Http\Request;
 //     return $request->user();
 // });
 
+Route::get('test', function() {
+	return \Config::get('broadcasting');
+});
+
 Route::group(['prefix' => 'plan', 'middleware' => 'jwt.auth'], function() {
 	Route::get('{idUser}', 'PlanController@index');
 	Route::post('insert', 'PlanController@insert');
-	Route::get('{idPlan}', 'PlanController@detail');
+	Route::get('detail/{idPlan}', 'PlanController@detail');
 
 	// distance matrix google api
-	Route::get('{idPlan}/measure', 'MeasureTimeController@measure');
+	Route::post('measure', 'MeasureTimeController@measure');
 });
 
 // Auth

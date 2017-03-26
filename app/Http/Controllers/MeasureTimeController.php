@@ -15,17 +15,21 @@ class MeasureTimeController extends Controller
     	$this->plan = $plan;
     }
 
-    public function measure($idPlan, MeasureRequest $measureRequest) {
-    	$viewedPlan = $this->plan->find($idPlan);
+    public function measure(MeasureRequest $measureRequest) {
+    	$viewedPlan = $this->plan->find($measureRequest['plan_id']);
 
     	$originLatLng = $measureRequest['lat'] . ", " . $measureRequest['lng'];
     	$destinationLatLng = $viewedPlan['lat'] . ", " . $viewedPlan['lng'];
+
+        // return $destinationLatLng;
 
     	$url = "https://maps.googleapis.com/maps/api/distancematrix/json?mode=walking&origins=" . $originLatLng . "&destinations=" . $destinationLatLng . "&key=AIzaSyCTgFYquxmF1dJdH-r_HrXZkG49sKuglSM";
     	$url = str_replace(" ", "%20", $url);
 
         $responseJSON = file_get_contents($url);
         $response = json_decode($responseJSON, true);
+
+        // return $response;                                
 
         $returnArr = [];
         if($response['status'] == 'OK') {
@@ -70,9 +74,10 @@ class MeasureTimeController extends Controller
             }
         }
 
-        broadcast(new MeasureTime(json_encode($returnArr)));
+        event(new MeasureTime($returnArr));
 
         // return response()->json($returnArr);
-        return ['status' => 'OKSIP'];
+        // return response()->json(['status' => 'OKSIP']);
+        return "test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test ";
     }
 }
