@@ -24,7 +24,7 @@ class MeasureRequest extends FormRequest
     public function rules()
     {
         return [
-            'id_plan' => 'required',
+            'plan_id' => 'required',
             'lat' => 'required',
             'lng' => 'required'
         ];
